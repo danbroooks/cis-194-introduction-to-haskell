@@ -10,12 +10,10 @@ toDigitsRev :: Integer -> [Integer]
 toDigitsRev n = reverse $ toDigits $ n
 
 doubleEveryOther :: [Integer] -> [Integer]
-doubleEveryOther xs =
-  let rec = case (reverse xs) of [] -> []
-                                 (x:[]) -> [x]
-                                 (x:(y:[])) -> [x, y * 2]
-                                 (x:(y:ys)) -> [x, y * 2] ++ reverse (doubleEveryOther (reverse ys))
-  in reverse rec
+doubleEveryOther xs = case (reverse xs)
+  of (x:[]) -> [x]
+     (x:(y:ys)) -> (doubleEveryOther (reverse ys)) ++ [y * 2, x]
+     _ -> []
 
 sumDigits :: [Integer] -> Integer
 sumDigits [] = 0
