@@ -23,8 +23,12 @@ toDigitsRevTest = testGroup "toDigitsRev"
 
 doubleEveryOtherTest :: TestTree
 doubleEveryOtherTest = testGroup "doubleEveryOther"
-  [ testCase "doubles every second" $ isEqual [16, 7, 12, 5] (doubleEveryOther [8, 7, 6, 5])
+  [ testCase "doubles every second" $ isEqual [1] (doubleEveryOther [1])
+  , testCase "doubles every second" $ isEqual [8, 1] (doubleEveryOther [4, 1])
   , testCase "doubles every second" $ isEqual [1, 4, 3] (doubleEveryOther [1, 2, 3])
+  , testCase "doubles every second" $ isEqual [16, 7, 12, 5] (doubleEveryOther [8, 7, 6, 5])
+  , testCase "doubles every second" $ isEqual [8, 1, 0, 3] (doubleEveryOther [4, 1, 0, 3])
+  , testCase "doubles every second" $ isEqual [8, 1, 0, 3, 6, 8] (doubleEveryOther [4, 1, 0, 3, 3, 8])
   ]
 
 sumDigitsTest :: TestTree
